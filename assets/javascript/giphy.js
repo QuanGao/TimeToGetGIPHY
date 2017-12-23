@@ -1,23 +1,56 @@
 $(document).ready(function(){
-var movies = ["Lion King","Frozen","Mulan","Aladin","The Little Mermaid","Beauty and the Beast","Moana",
-    "Bambi","Zootopia","Sleeping Beauty","Finding Nemo", "Cinderella","Pinocchio","Lady and the Tramp"]
+var topics = ["Lion King","Frozen","Mulan","Aladin","The Little Mermaid","Beauty and the Beast","Moana",
+    "Bambi","Zootopia","Sleeping Beauty","Rick and Morty","Finding Nemo", "Cinderella","Pinocchio","Lady and the Tramp"]
 
 var addbutton = function(buttonName){
-    var newbutton = $("<button>");
+    var newbutton = $("<button class='item'>");
     newbutton.text(buttonName);
+    newbutton.attr("data-name",buttonName)
     $(".buttons").append(newbutton);
+    
 }
 
-for (var i=0; i < movies.length; i++){
-    addbutton(movies[i]);
+for (var i=0; i < topics.length; i++){
+    addbutton(topics[i]);
 };
 
-var queryURL = 
+$(".buttons").on("click",".item",function(){
+    var topic = $(this).attr("data-name");
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + topic + 
+                    "&api_key=hX8Lvi8FoCPzl3YJE8GGqPDBwOkZ74kf&limit=10"
 
-// $.ajax({
-//     url:"",
-//     method: "GET"
-// }).done(function(){
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).done(function(response){
+        $(".gifs").empty();    
+        for (var j=0; j<10; j++){
+            var data = response.data[j];
+            var rating = $("<p class = 'ratings'>").text(`Rating: ${data.rating}`);
+            var gif = $("<img data-state='still'>")
+            var still_link = data.images.fixed_height_still.url;
+            var animated_link = data.images.fixed_height.url;
+            gif.attr("data-still",still_link);
+            gif.attr("data-animated",animated_link);
+            gif.attr("src",still_link);
+            $(".gifs").append(rating).append(gif);
+        }
+    })
+})
 
-// })
+$(".gifs").on("click","img",function(){
+    if($(this).attr("data-state")==="still"){
+        $(this).attr("src",$(this).attr("data-animated"));
+    } else {
+        $(this).attr("src",$(this).attr("data-still"));
+    }
+})
+
+
+
+
+
+
+
+
 });
