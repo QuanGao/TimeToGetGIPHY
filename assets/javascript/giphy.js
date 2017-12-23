@@ -23,6 +23,7 @@ $(".buttons").on("click",".item",function(){
         url: queryURL,
         method: "GET"
     }).done(function(response){
+        console.log(response.data)
         $(".gifs").empty();    
         for (var j=0; j<10; j++){
             var data = response.data[j];
@@ -33,7 +34,9 @@ $(".buttons").on("click",".item",function(){
             gif.attr("data-still",still_link);
             gif.attr("data-animated",animated_link);
             gif.attr("src",still_link);
-            $(".gifs").append(rating).append(gif);
+            var newDiv = $("<div class = 'imgRating'>")
+            newDiv.append(rating).append(gif);
+            $(".gifs").append(newDiv);
         }
     })
 })
@@ -41,8 +44,10 @@ $(".buttons").on("click",".item",function(){
 $(".gifs").on("click","img",function(){
     if($(this).attr("data-state")==="still"){
         $(this).attr("src",$(this).attr("data-animated"));
+        $(this).attr("data-state","animated");
     } else {
         $(this).attr("src",$(this).attr("data-still"));
+        $(this).attr("data-state","still");
     }
 })
 

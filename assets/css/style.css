@@ -5,9 +5,11 @@
 }
 h1 {
     text-align: center;
-    margin: 0px;
-    padding: 12px 0px 12px 0px;
-    font-family: 'Bungee', cursive;  
+    margin: 0px 0px 5px 0px;
+    padding-top: 20px;
+    font-family: 'Bungee', cursive;
+    height: 70px;
+
 }
 
 h1, .btn-primary{
@@ -33,15 +35,18 @@ button {
     font-size: 16px;
    
 }
-.gifs img{
-    max-width: 25%;
-    display: inline-block;
+.imgRating{
+    float:left;
+    margin-right: 5px;
+    padding:5px; 
+
 }
 
 .gifs{
     padding-left:20px;
+
 }
 .ratings{
     margin-top:10px;
-    margin-bottom:5px;
+    margin-bottom:0px;
 }
