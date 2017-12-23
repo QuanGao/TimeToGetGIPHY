@@ -1,0 +1,26 @@
+.container-fluid {
+    padding-left: 0px;
+    padding-right: 0px;
+
+}
+h1 {
+    text-align: center;
+    margin: 0px;
+    padding: 12px 0px 12px 0px;
+    font-family: 'Bungee', cursive;  
+}
+
+h1, .btn-primary{
+    background: linear-gradient(to bottom,#e11937,#da1c55);
+    color: white; 
+    border: none; 
+}
+aside{
+    font-size: 20px;
+    
+}
+input {
+    width: 80%;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
