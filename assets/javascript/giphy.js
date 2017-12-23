@@ -46,11 +46,8 @@ $(".gifs").on("click","img",function(){
     }
 })
 
-
-
-
-
-
-
-
+$("button[type=submit]").on("click",function(){
+    var newName = $("input[type=text").val();
+    addbutton(newName);
+})
 });
