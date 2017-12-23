@@ -53,6 +53,11 @@ $(".gifs").on("click","img",function(){
 
 $("button[type=submit]").on("click",function(){
     var newName = $("input[type=text").val();
-    addbutton(newName);
+    var existedTopics = topics.map(function(string){return string.toUpperCase()});
+    var isNewValue = existedTopics.indexOf(newName.toUpperCase())===-1;
+    console.log(existedTopics);
+    if(isNewValue){
+        addbutton(newName);
+    } else {alert("button already exist, pick another one!")}
 })
 });
