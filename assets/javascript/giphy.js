@@ -23,7 +23,6 @@ $(".buttons").on("click",".item",function(){
         url: queryURL,
         method: "GET"
     }).done(function(response){
-        console.log(response.data)
         $(".gifs").empty();    
         for (var j=0; j<10; j++){
             var data = response.data[j];
@@ -55,7 +54,6 @@ $("button[type=submit]").on("click",function(){
     var newName = $("input[type=text").val();
     var existedTopics = topics.map(function(string){return string.toUpperCase()});
     var isNewValue = existedTopics.indexOf(newName.toUpperCase())===-1;
-    console.log(existedTopics);
     if(isNewValue){
         addbutton(newName);
     } else {alert("button already exist, pick another one!")}
